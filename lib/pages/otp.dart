@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import '../common_widgets/common_textfield.dart';
 
 class Otp extends StatefulWidget {
   const Otp({Key? key}) : super(key: key);

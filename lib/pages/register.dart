@@ -1,9 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:helloworld/pages/login.dart';
-
 import '../common_widgets/common_textfield.dart';
-import '../main.dart';
 import 'otp.dart';
 
 class Register extends StatefulWidget {
