@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.6
   carousel_slider: ^4.2.1
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -93,5 +94,4 @@ flutter:
     - assets/
     - assets/images/
     - assets/images/foods/
-    - assets/icons/
 

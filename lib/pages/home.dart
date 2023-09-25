@@ -1,10 +1,43 @@
-import 'package:flutter/material.dart';
-import '../models/product_item.dart';
+import 'dart:convert';
+import 'dart:developer';
 
-class HomePage extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:helloworld/models/food_item.dart';
+import '../models/product_item.dart';
+import 'package:http/http.dart' as http;
+
+Future<FoodItem> fetchFood() async {
+  final response = await http.get(Uri.parse('http://103.157.218.115/LunchTime/hs/LunchTime/V1/Food'));
+
+  if (response.statusCode == 200) {
+    return FoodItem.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to load Food');
+  }
+}
+
+// class HomePage extends StatelessWidget {
+//   String username;
+//   HomePage({super.key, this.username = 'New user'});
+
+class HomePage extends StatefulWidget {
   String username;
 
   HomePage({super.key, this.username = 'New user'});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late Future<FoodItem> futureFood;
+
+  @override
+  void initState() {
+    super.initState();
+    futureFood = fetchFood();
+    log(futureFood.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +54,18 @@ class HomePage extends StatelessWidget {
       // ),
       body: Column(
         children: [
+          FutureBuilder<FoodItem>(
+            future: futureFood,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Text(snapshot.data!.code);
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
+              // By default, show a loading spinner.
+              return const CircularProgressIndicator();
+            },
+          ),
           Container(
               color: Colors.white,
               width: double.infinity,
@@ -46,18 +91,21 @@ class HomePage extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20.0),
+                  topRight: Radius.circular(20.0)),
             ),
             child: Column(
               children: [
                 Container(
-                  margin: const EdgeInsets.only(top: 8.0, bottom: 8.0, right: 12.0),
+                  margin:
+                      const EdgeInsets.only(top: 8.0, bottom: 8.0, right: 12.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       const Text('Welcome, '),
                       Text(
-                        username,
+                        widget.username,
                         style: const TextStyle(
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
@@ -122,7 +170,6 @@ class HomePage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-
                                 Text(
                                     "${dummyData.listProduct[index].price} VND",
                                     style: const TextStyle(
