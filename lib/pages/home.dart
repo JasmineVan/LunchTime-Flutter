@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:helloworld/models/food_item.dart';
+import 'package:helloworld/pages/product_detail.dart';
 import '../models/product_item.dart';
 import 'package:http/http.dart' as http;
 
@@ -73,7 +74,7 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               height: 240.0,
               child: const Image(
-                image: AssetImage(
+                image: NetworkImage(
                   "assets/images/cover.png",
                 ),
                 fit: BoxFit.fill,
@@ -136,60 +137,64 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.vertical,
                 itemCount: dummyData.listProduct.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    padding: const EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.0),
-                      border: Border.all(color: Colors.grey),
-                      color: const Color(0xFFFFF6DC),
-                    ),
-                    height: 120.0,
-                    width: 120.0,
-                    margin: const EdgeInsets.only(
-                        top: 4.0, bottom: 4.0, left: 16.0, right: 16.0),
-                    child: Center(
-                      child: Container(
-                        margin: const EdgeInsets.only(left: 8.0, right: 8.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            CircleAvatar(
-                                radius: 60.0,
-                                backgroundImage: AssetImage(
-                                  dummyData.listProduct[index].pictureURL,
-                                )),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  children: [
-                                    Text(
-                                        dummyData.listProduct[index].productName
-                                            .toString(),
+                  return GestureDetector(
+                    onTap: () => Get.to(ProductDetail(index: index)),
+                    child: Container(
+                      padding: const EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.0),
+                        border: Border.all(color: Colors.grey),
+                        color: const Color(0xFFFFF6DC),
+                      ),
+                      height: 120.0,
+                      width: 120.0,
+                      margin: const EdgeInsets.only(
+                          top: 4.0, bottom: 4.0, left: 16.0, right: 16.0),
+                      child: Center(
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 8.0, right: 8.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              CircleAvatar(
+                                  radius: 60.0,
+                                  backgroundImage: NetworkImage(
+                                    dummyData.listProduct[index].pictureURL,
+                                  )),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text(
+                                          dummyData.listProduct[index].productName
+                                              .toString(),
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20.0,
+                                          )),
+                                      Text(
+                                        "ID: ${dummyData.listProduct[index].productID}",
                                         style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20.0,
-                                        )),
-                                    Text(
-                                      "ID: ${dummyData.listProduct[index].productID}",
-                                      style: const TextStyle(
-                                        fontSize: 12.0,
-                                        fontStyle: FontStyle.italic,
+                                          fontSize: 12.0,
+                                          fontStyle: FontStyle.italic,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                    "${dummyData.listProduct[index].price} VND",
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0,
-                                    )),
-                              ],
-                            ),
-                          ],
+                                    ],
+                                  ),
+                                  Text(
+                                      "${dummyData.listProduct[index].price} VNĐ",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20.0,
+                                      )),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

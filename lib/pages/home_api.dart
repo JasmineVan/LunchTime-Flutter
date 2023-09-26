@@ -86,104 +86,109 @@ class _HomeAPIState extends State<HomeAPI> {
                       // itemCount: dummyData.listProduct.length,
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          padding: const EdgeInsets.all(8.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16.0),
-                            border: Border.all(color: Colors.grey),
-                            color: const Color(0xFFFFF6DC),
-                          ),
-                          height: 120.0,
-                          width: 120.0,
-                          margin: const EdgeInsets.only(
-                              top: 4.0, bottom: 4.0, left: 16.0, right: 16.0),
-                          child: Center(
-                            child: Container(
-                              margin:
-                                  const EdgeInsets.only(left: 8.0, right: 8.0),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CircleAvatar(
-                                    radius: 60.0,
-                                    // backgroundImage: AssetImage(
-                                    //   // dummyData.listProduct[index].pictureURL,
-                                    //     snapshot.data[index]["pictureURL"]
-                                    // )
-                                    backgroundImage: NetworkImage(
-                                        '${snapshot.data[index]["PictureURL"]}'),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Text(
-                                              // dummyData.listProduct[index].productName
-                                              snapshot.data[index]
-                                                      ["Description"]
-                                                  .toString(),
-                                              style: const TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20.0,
-                                              )),
-                                          Text(
-                                            // "ID: ${dummyData.listProduct[index].productID}",
-                                            "ID: ${snapshot.data[index]["Code"]}",
-                                            style: const TextStyle(
-                                              fontSize: 12.0,
-                                              fontStyle: FontStyle.italic,
-                                            ),
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                // "ID: ${dummyData.listProduct[index].productID}",
-                                                "${snapshot.data[index]["Category"]}",
+                        return GestureDetector(
+                          onTap: () {
+
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16.0),
+                              border: Border.all(color: Colors.grey),
+                              color: const Color(0xFFFFF6DC),
+                            ),
+                            height: 120.0,
+                            width: 120.0,
+                            margin: const EdgeInsets.only(
+                                top: 4.0, bottom: 4.0, left: 16.0, right: 16.0),
+                            child: Center(
+                              child: Container(
+                                margin:
+                                    const EdgeInsets.only(left: 8.0, right: 8.0),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 60.0,
+                                      // backgroundImage: AssetImage(
+                                      //   // dummyData.listProduct[index].pictureURL,
+                                      //     snapshot.data[index]["pictureURL"]
+                                      // )
+                                      backgroundImage: NetworkImage(
+                                          '${snapshot.data[index]["PictureURL"]}'),
+                                    ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                                // dummyData.listProduct[index].productName
+                                                snapshot.data[index]
+                                                        ["Description"]
+                                                    .toString(),
                                                 style: const TextStyle(
-                                                  fontSize: 12.0,
-                                                  fontStyle: FontStyle.italic,
-                                                ),
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20.0,
+                                                )),
+                                            Text(
+                                              // "ID: ${dummyData.listProduct[index].productID}",
+                                              "ID: ${snapshot.data[index]["Code"]}",
+                                              style: const TextStyle(
+                                                fontSize: 12.0,
+                                                fontStyle: FontStyle.italic,
                                               ),
-                                              const Text(' - '),
-                                              // Text(
-                                              //   "Rate: ${snapshot.data[index]["Rating"]}"
-                                              //   // "ID: ${dummyData.listProduct[index].productID}",
-                                              //   ,
-                                              //   style: const TextStyle(
-                                              //     fontSize: 12.0,
-                                              //     fontStyle: FontStyle.italic,
-                                              //   ),
-                                              // ),
-                                              Text((() {
-                                                if (snapshot
-                                                        .data[index]["Rating"]
-                                                        .length ==
-                                                    0) {
-                                                  return "No rating";
-                                                }
-                                                return "${snapshot.data[index]["Rating"]}";
-                                              }()))
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      Text(
-                                          // "${dummyData.listProduct[index].price} VND",
-                                          "${snapshot.data[index]["Price"]} VNĐ",
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20.0,
-                                          )),
-                                    ],
-                                  ),
-                                ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  // "ID: ${dummyData.listProduct[index].productID}",
+                                                  "${snapshot.data[index]["Category"]}",
+                                                  style: const TextStyle(
+                                                    fontSize: 12.0,
+                                                    fontStyle: FontStyle.italic,
+                                                  ),
+                                                ),
+                                                const Text(' - '),
+                                                // Text(
+                                                //   "Rate: ${snapshot.data[index]["Rating"]}"
+                                                //   // "ID: ${dummyData.listProduct[index].productID}",
+                                                //   ,
+                                                //   style: const TextStyle(
+                                                //     fontSize: 12.0,
+                                                //     fontStyle: FontStyle.italic,
+                                                //   ),
+                                                // ),
+                                                Text((() {
+                                                  if (snapshot
+                                                          .data[index]["Rating"]
+                                                          .length ==
+                                                      0) {
+                                                    return "No rating";
+                                                  }
+                                                  return "${snapshot.data[index]["Rating"]}";
+                                                }()))
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        Text(
+                                            // "${dummyData.listProduct[index].price} VND",
+                                            "${snapshot.data[index]["Price"]} VNĐ",
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20.0,
+                                            )),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),

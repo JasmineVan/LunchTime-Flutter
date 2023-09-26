@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:helloworld/pages/home_api.dart';
 import 'package:helloworld/pages/login.dart';
 import 'package:helloworld/pages/otp.dart';
+import 'package:helloworld/pages/product_detail.dart';
+import 'package:helloworld/scroll_behavior.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,12 +16,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
+    // return GetMaterialApp(
+      scrollBehavior: MyCustomScrollBehavior(),
       debugShowCheckedModeBanner: false,
       title: 'Lunch Time',
       home: Login(),
       // home: Otp(),
       // home: HomeAPI(),
+      // home: ProductDetail(index: 1),
     );
   }
 }
