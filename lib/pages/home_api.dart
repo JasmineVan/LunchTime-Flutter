@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:helloworld/pages/product_detail_api.dart';
 import 'package:http/http.dart' as http;
 
 Future<dynamic> fetchFood() async {
@@ -49,7 +50,7 @@ class FoodItem {
   }
 }
 
-void main() => runApp(const HomeAPI());
+// void main() => runApp(const HomeAPI());
 
 class HomeAPI extends StatefulWidget {
   const HomeAPI({super.key});
@@ -69,9 +70,9 @@ class _HomeAPIState extends State<HomeAPI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Food List From API'),
-        ),
+        // appBar: AppBar(
+        //   title: const Text('Food List From API'),
+        // ),
         body: Center(
           child: FutureBuilder<dynamic>(
             future: fetchFood(),
@@ -87,9 +88,7 @@ class _HomeAPIState extends State<HomeAPI> {
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
                         return GestureDetector(
-                          onTap: () {
-
-                          },
+                          onTap: () => Get.to(ProductDetailAPI(foodCode: snapshot.data[index]["Code"],)),
                           child: Container(
                             padding: const EdgeInsets.all(8.0),
                             decoration: BoxDecoration(

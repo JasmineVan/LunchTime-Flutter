@@ -10,15 +10,6 @@ import 'package:http/http.dart' as http;
 
 import 'home_api.dart';
 
-Future<dynamic> fetchFood() async {
-  final response = await http.get(Uri.parse('http://103.157.218.115/LunchTime/hs/LunchTime/V1/Food'));
-  if (response.statusCode == 200) {
-    return jsonDecode(response.body);
-  } else {
-    throw Exception('Failed to load Food');
-  }
-}
-
 // class HomePage extends StatelessWidget {
 //   String username;
 //   HomePage({super.key, this.username = 'New user'});
@@ -74,7 +65,7 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               height: 240.0,
               child: const Image(
-                image: NetworkImage(
+                image: AssetImage(
                   "assets/images/cover.png",
                 ),
                 fit: BoxFit.fill,
