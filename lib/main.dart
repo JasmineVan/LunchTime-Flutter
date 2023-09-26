@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:helloworld/pages/home_api.dart';
 import 'package:helloworld/pages/login.dart';
 import 'package:helloworld/pages/otp.dart';
 
@@ -18,6 +19,10 @@ class MyApp extends StatelessWidget {
       title: 'Lunch Time',
       home: Login(),
       // home: Otp(),
+      // home: HomeAPI(),
     );
   }
 }
+
+// ---------------------------------
+

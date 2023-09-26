@@ -22,3 +22,10 @@ class FoodItem {
     );
   }
 }
+
+class Foods{
+
+  List<FoodItem> listFood = [
+
+  ];
+}

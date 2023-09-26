@@ -2,15 +2,17 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:helloworld/models/food_item.dart';
 import '../models/product_item.dart';
 import 'package:http/http.dart' as http;
 
-Future<FoodItem> fetchFood() async {
-  final response = await http.get(Uri.parse('http://103.157.218.115/LunchTime/hs/LunchTime/V1/Food'));
+import 'home_api.dart';
 
+Future<dynamic> fetchFood() async {
+  final response = await http.get(Uri.parse('http://103.157.218.115/LunchTime/hs/LunchTime/V1/Food'));
   if (response.statusCode == 200) {
-    return FoodItem.fromJson(jsonDecode(response.body));
+    return jsonDecode(response.body);
   } else {
     throw Exception('Failed to load Food');
   }
@@ -30,7 +32,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Future<FoodItem> futureFood;
+  dynamic futureFood;
 
   @override
   void initState() {
@@ -54,18 +56,18 @@ class _HomePageState extends State<HomePage> {
       // ),
       body: Column(
         children: [
-          FutureBuilder<FoodItem>(
-            future: futureFood,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text(snapshot.data!.code);
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
-              // By default, show a loading spinner.
-              return const CircularProgressIndicator();
-            },
-          ),
+          // FutureBuilder<FoodItem>(
+          //   future: futureFood,
+          //   builder: (context, snapshot) {
+          //     if (snapshot.hasData) {
+          //       return Text(snapshot.data!.code);
+          //     } else if (snapshot.hasError) {
+          //       return Text('${snapshot.error}');
+          //     }
+          //     // By default, show a loading spinner.
+          //     return const CircularProgressIndicator();
+          //   },
+          // ),
           Container(
               color: Colors.white,
               width: double.infinity,
@@ -113,6 +115,15 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
+                ),
+                GestureDetector(
+                  onTap: () => Get.to(const HomeAPI()),
+                  child: const Text('Foods from API',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.0,
+                      )),
                 ),
               ],
             ),

@@ -44,4 +44,5 @@ class DummyData {
     ProductItem('00008', 'Water', "assets/images/foods/ca dieu hong chien.jpg", 100000.00),
     ProductItem('00007', 'Long', "assets/images/foods/ca hu kho tieu.jpg", 20000.00),
   ];
+
 }
