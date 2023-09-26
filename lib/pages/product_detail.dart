@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import '../models/product_item.dart';
 
 class ProductDetail extends StatefulWidget {
-
   final int index;
 
   const ProductDetail({super.key, required this.index});
@@ -13,13 +12,11 @@ class ProductDetail extends StatefulWidget {
 }
 
 class _ProductDetailState extends State<ProductDetail> {
-
   final listProduct = DummyData().listProduct;
 
   void addToCart() {
     // true
-    Get.snackbar('Success',
-        'Add product to cart successfully!');
+    Get.snackbar('Success', 'Add product to cart successfully!');
   }
 
   @override
@@ -63,7 +60,8 @@ class _ProductDetailState extends State<ProductDetail> {
                           padding: const EdgeInsets.all(12.0),
                           decoration: const BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
                                 color: Colors.black54,
@@ -75,22 +73,25 @@ class _ProductDetailState extends State<ProductDetail> {
                           child: Row(
                             children: [
                               Text('${listProduct[widget.index].price} VNĐ',
-                              style: const TextStyle(
-                                color: Colors.black54,
-                                fontSize: 24.0,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 1.2,
-                              )),
+                                  style: const TextStyle(
+                                    color: Colors.black54,
+                                    fontSize: 24.0,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 1.2,
+                                  )
+                              ),
                             ],
                           )),
                       Container(
                           width: maxWidth,
                           height: maxHeight * 0.6 * 0.4,
-                          margin: const EdgeInsets.only(top: 12.0, bottom: 24.0, left: 24.0, right: 24.0),
+                          margin: const EdgeInsets.only(
+                              top: 12.0, bottom: 24.0, left: 24.0, right: 24.0),
                           padding: const EdgeInsets.all(12.0),
                           decoration: const BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black54,
@@ -119,16 +120,19 @@ class _ProductDetailState extends State<ProductDetail> {
                                       fontStyle: FontStyle.italic,
                                       letterSpacing: 1.2,
                                     )),
-                                const Text('A product description is a form of marketing copy used to describe and explain the benefits of your product. In other words, it provides all the information and details of your product on your ecommerce site.',
+                                const Text(
+                                    'A product description is a form of marketing copy used to describe and explain the benefits of your product. In other words, it provides all the information and details of your product on your ecommerce site.',
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 12.0,
                                       letterSpacing: 1.2,
-                                    )),
+                                    )
+                                ),
                               ],
                             ),
-                          )),
+                          )
+                      ),
                       SizedBox(
                           width: maxWidth * 0.5,
                           height: maxHeight * 0.6 * 0.1,
@@ -142,7 +146,9 @@ class _ProductDetailState extends State<ProductDetail> {
                                 style: TextStyle(
                                   color: Colors.white,
                                 ),
-                              ))),
+                              )
+                          )
+                      ),
                     ],
                   ),
                 ),
