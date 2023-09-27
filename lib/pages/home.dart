@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,12 +31,13 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     futureFood = fetchFood();
-    log(futureFood.toString());
   }
 
   @override
   Widget build(BuildContext context) {
+
     final dummyData = DummyData();
+
     return Scaffold(
       backgroundColor: const Color.fromRGBO(255, 209, 143, 1.0),
       // appBar: AppBar(
@@ -108,15 +110,15 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: () => Get.to(const HomeAPI()),
-                  child: const Text('Foods from API',
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12.0,
-                      )),
-                ),
+                // GestureDetector(
+                //   onTap: () => Get.to(const HomeAPI()),
+                //   child: const Text('Foods from API',
+                //       style: TextStyle(
+                //         color: Colors.red,
+                //         fontWeight: FontWeight.bold,
+                //         fontSize: 12.0,
+                //       )),
+                // ),
               ],
             ),
           ),

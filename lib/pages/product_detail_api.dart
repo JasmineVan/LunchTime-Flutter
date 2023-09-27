@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -63,6 +63,11 @@ class ProductDetailAPI extends StatefulWidget {
 
 class _ProductDetailAPIState extends State<ProductDetailAPI> {
   late Future<FoodItem> futureFood;
+
+  void addToCart() {
+    // true
+    Get.snackbar('Success', 'Add product to cart successfully!');
+  }
 
   @override
   void initState() {
@@ -200,7 +205,7 @@ class _ProductDetailAPIState extends State<ProductDetailAPI> {
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: Colors.red,
                                         ),
-                                        onPressed: (){},
+                                        onPressed: addToCart,
                                         child: const Text(
                                           'Add to cart',
                                           style: TextStyle(

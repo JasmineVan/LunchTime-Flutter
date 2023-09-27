@@ -4,6 +4,7 @@ import 'package:helloworld/pages/home.dart';
 import 'package:helloworld/pages/register.dart';
 
 import '../common_widgets/common_textfield.dart';
+import 'navigation_page.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -20,9 +21,10 @@ class _LoginState extends State<Login> {
   void verify() {
     if (textEditingController1.text.compareTo('1') == 0) {
       // true
-      Get.off(HomePage(
-        username: textEditingController.text,
-      ));
+      // Get.off(HomePage(
+      //   username: textEditingController.text,
+      // ));
+      Get.to(Navigation());
     } else {
       // false
       Get.snackbar('Couldn\'t find your Lunch Time account',
