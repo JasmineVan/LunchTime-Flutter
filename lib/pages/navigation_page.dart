@@ -61,7 +61,7 @@ class _NavigationState extends State<Navigation> {
               final dummyData = DummyData();
               final random = Random();
               int randomIndex = random.nextInt(dummyData.listProduct.length);
-              Get.to(ProductDetail(index: randomIndex));
+              Get.to(ProductDetail(index: randomIndex, playConfetti: true,));
             },
           ),
         ),

@@ -131,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                 itemCount: dummyData.listProduct.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
-                    onTap: () => Get.to(ProductDetail(index: index)),
+                    onTap: () => Get.to(ProductDetail(index: index, playConfetti: false,)),
                     child: Container(
                       padding: const EdgeInsets.all(8.0),
                       decoration: BoxDecoration(
