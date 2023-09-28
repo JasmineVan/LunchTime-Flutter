@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:helloworld/pages/product_detail.dart';
+import 'package:helloworld/pages/random_food.dart';
 
 import '../models/product_item.dart';
 import 'home.dart';
@@ -43,28 +44,16 @@ class _NavigationState extends State<Navigation> {
             label: 'Food API',
           ),
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.person_2_rounded),
-            icon: Icon(Icons.person_2_outlined),
-            label: 'Nothing',
+            activeIcon: Icon(Icons.accessibility_rounded),
+            icon: Icon(Icons.accessibility_outlined),
+            label: 'Food Of The Day',
           ),
         ],
       ),
       body: <Widget>[
         HomePage(),
         HomeAPI(),
-        Container(
-          color: const Color(0xFFFFD18F),
-          alignment: Alignment.center,
-          child: ElevatedButton(
-            child: const Text('Choose food'),
-            onPressed: () {
-              final dummyData = DummyData();
-              final random = Random();
-              int randomIndex = random.nextInt(dummyData.listProduct.length);
-              Get.to(ProductDetail(index: randomIndex, playConfetti: true,));
-            },
-          ),
-        ),
+        const RandomFood(),
       ][currentPageIndex],
     );
   }

@@ -178,7 +178,7 @@ class _HomeAPIState extends State<HomeAPI> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(16.0),
                                     border: Border.all(color: Colors.grey),
-                                    color: const Color(0xFFFFC8CD),
+                                    color: const Color.fromRGBO(244, 205, 203, 0.5),
                                   ),
                                   height: 120.0,
                                   width: 120.0,

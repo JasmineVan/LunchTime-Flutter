@@ -5,17 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../models/product_item.dart';
 
-class ProductDetail extends StatefulWidget {
+class RandomFoodDetail extends StatefulWidget {
   final bool playConfetti;
   final int index;
 
-  const ProductDetail({super.key, required this.playConfetti, required this.index});
+  const RandomFoodDetail({super.key, required this.playConfetti, required this.index});
 
   @override
-  State<ProductDetail> createState() => _ProductDetailState();
+  State<RandomFoodDetail> createState() => _RandomFoodDetailState();
 }
 
-class _ProductDetailState extends State<ProductDetail> {
+class _RandomFoodDetailState extends State<RandomFoodDetail> {
   final listProduct = DummyData().listProduct;
   final confettiController = ConfettiController();
 
